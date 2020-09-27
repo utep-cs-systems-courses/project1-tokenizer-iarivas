@@ -56,21 +56,23 @@ static char *test_tokenize() {
     mu_assert("tokens[0] == 'happy'", strcmp(tokens[0], "happy") == 0);
     mu_assert("tokens[1] == 'happy'", strcmp(tokens[1], "happy") == 0);
     mu_assert("tokens[2] == 'joy'", strcmp(tokens[2], "joy") == 0);
-    mu_assert("tokens[3] == 'joy'", strcmp(tokens[3], "joy") == 0);
+    mu_assert("tokens[3] == 'joy'", strcmp(tokens[3], "joy") ==0);
     free_tokens(tokens);
+    printf("works\n");
     return 0;
 }
-*/
 /* History test cases */
+
 /*
 static char *test_add_history() {
     List* list = init_history();
     add_history(list, "happy");
-    mu_assert("add_history(list, 'happy')", strcmp(list->root->str, "happy") == 0);
+    mu_assert("add_history(list, 'happy')", (list->root->str, "happy") == 0);
     add_history(list, "joy");
     mu_assert("add_history(list, 'joy')", strcmp(list->root->next->str, "joy") == 0);
     return 0;
 }
+*/
 
 static char *test_get_history() {
     List* list = init_history();
@@ -78,7 +80,6 @@ static char *test_get_history() {
     mu_assert("get_history(list, 1)", strcmp(get_history(list, 1), "happy") == 0);
     return 0;
 }
-*/
 
 static char *all_tests() {
     if (TEST_TOKENIZER) {
@@ -92,7 +93,7 @@ static char *all_tests() {
 
     if (TEST_HISTORY) {
       // mu_run_test(test_add_history);
-      // mu_run_test(test_get_history);
+       mu_run_test(test_get_history);
     }
 
     return 0;
